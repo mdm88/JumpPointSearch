@@ -2,35 +2,10 @@ EpPathFinding.cs
 ================
 #### A jump point search algorithm for grid based games in C# ####
 
-For 3D Environment
+Original Project
 -----------------
-You may take a look at [EpPathFinding3D.cs](https://github.com/juhgiyo/EpPathFinding3D.cs)
-
-Introduction
-------------
-This project was started after I was inspired by [PathFinding.js by Xueqiao Xu](https://github.com/qiao/PathFinding.js) and [the article by D. Harabor](http://harablog.wordpress.com/2011/09/07/jump-point-search/).
-It comes along with a demo to show how the agorithm execute as similar to Xueqiao Xu's [Online Demo](http://qiao.github.com/PathFinding.js/visual).
-
-Unity Integration Guide
-------------
-
-Copy `EpPathFinding.cs\PathFinder` folder intto your `Unity Project's Assets` folder. Then within the script file, you want to use the `EpPathFinding.cs`, just add `using EpPathFinding.cs;` namespace at the top of the file, and use it as the guide below.
-
-
-(If you have a problem when compiling, please refer to [Unity Forum](http://forum.unity3d.com/threads/monodevelop-problems-with-default-parameters.67867/#post-898994)) 
-
-
-Also `EpPathFinding.cs` depends on [C5](https://github.com/sestoft/C5).
-
-Pre-compiled C5.dll for Unity is included in `EpPathFinding3D.cs\PathFinder\UnityC5` folder.
-
-(Please refer to [C5 on Unity3D](https://github.com/sestoft/C5#c5-on-unity3d), if you have any dependency issue with C5.)
-
-
-Nuget Package
-------------
-[Nuget Package](https://www.nuget.org/packages/EpPathFinding.cs/)
-
+This project is forked from [EpPathFinding.cs](https://github.com/juhgiyo/EpPathFinding.cs)
+And inspired by [PathFinding.js by Xueqiao Xu](https://github.com/qiao/PathFinding.js) and [the article by D. Harabor](http://harablog.wordpress.com/2011/09/07/jump-point-search/).
 
 Basic Usage
 ------------
