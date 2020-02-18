@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <PackageId>JumpPointSearch</PackageId>
+        <Version>0.1.0</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RootNamespace>JumpPointSearch</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="C5" Version="2.5.3" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpPointSearch", "JumpPointSearch\JumpPointSearch.csproj", "{7266CE98-F804-4742-9745-5186D87CF778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{88D81FF6-78EE-45BF-87FA-88000194A5E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7266CE98-F804-4742-9745-5186D87CF778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7266CE98-F804-4742-9745-5186D87CF778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7266CE98-F804-4742-9745-5186D87CF778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7266CE98-F804-4742-9745-5186D87CF778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D81FF6-78EE-45BF-87FA-88000194A5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D81FF6-78EE-45BF-87FA-88000194A5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D81FF6-78EE-45BF-87FA-88000194A5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D81FF6-78EE-45BF-87FA-88000194A5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
