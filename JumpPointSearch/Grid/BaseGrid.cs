@@ -238,23 +238,26 @@ namespace JumpPointSearch.Grid
                 tS2 = false, tD2 = false,
                 tS3 = false, tD3 = false;
 
-            GridPos pos = new GridPos();
-            if (IsWalkableAt(pos.Set(tX, tY - 1)))
+            GridPos pos = new GridPos(tX, tY - 1);
+            if (IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
                 tS0 = true;
             }
-            if (IsWalkableAt(pos.Set(tX + 1, tY)))
+            pos = new GridPos(tX + 1, tY);
+            if (IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
                 tS1 = true;
             }
-            if (IsWalkableAt(pos.Set(tX, tY + 1)))
+            pos = new GridPos(tX, tY + 1);
+            if (IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
                 tS2 = true;
             }
-            if (IsWalkableAt(pos.Set(tX - 1, tY)))
+            pos = new GridPos(tX - 1, tY);
+            if (IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
                 tS3 = true;
@@ -286,19 +289,23 @@ namespace JumpPointSearch.Grid
                     break;
             }
 
-            if (tD0 && IsWalkableAt(pos.Set(tX - 1, tY - 1)))
+            pos = new GridPos(tX - 1, tY - 1);
+            if (tD0 && IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
             }
-            if (tD1 && IsWalkableAt(pos.Set(tX + 1, tY - 1)))
+            pos = new GridPos(tX + 1, tY - 1);
+            if (tD1 && IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
             }
-            if (tD2 && IsWalkableAt(pos.Set(tX + 1, tY + 1)))
+            pos = new GridPos(tX + 1, tY + 1);
+            if (tD2 && IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
             }
-            if (tD3 && IsWalkableAt(pos.Set(tX - 1, tY + 1)))
+            pos = new GridPos(tX - 1, tY + 1);
+            if (tD3 && IsWalkableAt(pos))
             {
                 neighbors.Add(GetNodeAt(pos));
             }
