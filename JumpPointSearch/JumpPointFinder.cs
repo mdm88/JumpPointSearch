@@ -58,49 +58,7 @@ namespace JumpPointSearch
 
     public class JumpPointParam : ParamBase
     {
-        [System.Obsolete("This constructor is deprecated, please use the Constructor with EndNodeUnWalkableTreatment and DiagonalMovement instead.")]
-        public JumpPointParam(BaseGrid iGrid, GridPos iStartPos, GridPos iEndPos, bool iAllowEndNodeUnWalkable = true, bool iCrossCorner = true, bool iCrossAdjacentPoint = true, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
-            :base(iGrid, iStartPos, iEndPos, Util.GetDiagonalMovement(iCrossCorner, iCrossAdjacentPoint), iMode)
-        {
-            CurEndNodeUnWalkableTreatment = iAllowEndNodeUnWalkable ? EndNodeUnWalkableTreatment.ALLOW : EndNodeUnWalkableTreatment.DISALLOW;
-            openList = new IntervalHeap<Node>();
-
-            CurIterationType = IterationType.LOOP;
-        }
-
-        [System.Obsolete("This constructor is deprecated, please use the Constructor with EndNodeUnWalkableTreatment and DiagonalMovement instead.")]
-        public JumpPointParam(BaseGrid iGrid, bool iAllowEndNodeUnWalkable = true, bool iCrossCorner = true, bool iCrossAdjacentPoint = true, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
-            : base(iGrid, Util.GetDiagonalMovement(iCrossCorner, iCrossAdjacentPoint), iMode)
-        {
-            CurEndNodeUnWalkableTreatment = iAllowEndNodeUnWalkable ? EndNodeUnWalkableTreatment.ALLOW : EndNodeUnWalkableTreatment.DISALLOW;
-
-            openList = new IntervalHeap<Node>();
-            CurIterationType = IterationType.LOOP;
-        }
-
-        [System.Obsolete("This constructor is deprecated, please use the Constructor with EndNodeUnWalkableTreatment and DiagonalMovement instead.")]
-        public JumpPointParam(BaseGrid iGrid, GridPos iStartPos, GridPos iEndPos, bool iAllowEndNodeUnWalkable = true, DiagonalMovement iDiagonalMovement= DiagonalMovement.Always, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
-            : base(iGrid,iStartPos,iEndPos, iDiagonalMovement, iMode)
-        {
-
-            CurEndNodeUnWalkableTreatment = iAllowEndNodeUnWalkable ? EndNodeUnWalkableTreatment.ALLOW : EndNodeUnWalkableTreatment.DISALLOW;
-            openList = new IntervalHeap<Node>();
-
-            CurIterationType = IterationType.LOOP;
-        }
-
-        [System.Obsolete("This constructor is deprecated, please use the Constructor with EndNodeUnWalkableTreatment and DiagonalMovement instead.")]
-        public JumpPointParam(BaseGrid iGrid, bool iAllowEndNodeUnWalkable = true, DiagonalMovement iDiagonalMovement= DiagonalMovement.Always, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
-            : base(iGrid, iDiagonalMovement, iMode)
-        {
-            CurEndNodeUnWalkableTreatment = iAllowEndNodeUnWalkable ? EndNodeUnWalkableTreatment.ALLOW : EndNodeUnWalkableTreatment.DISALLOW;
-            
-            openList = new IntervalHeap<Node>();
-            CurIterationType = IterationType.LOOP;
-        }
-
-
-        public JumpPointParam(BaseGrid iGrid, GridPos iStartPos, GridPos iEndPos, EndNodeUnWalkableTreatment iAllowEndNodeUnWalkable = EndNodeUnWalkableTreatment.ALLOW, DiagonalMovement iDiagonalMovement = DiagonalMovement.Always, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
+        public JumpPointParam(BaseGrid iGrid, GridPos iStartPos, GridPos iEndPos, EndNodeUnWalkableTreatment iAllowEndNodeUnWalkable = EndNodeUnWalkableTreatment.ALLOW, DiagonalMovement iDiagonalMovement = DiagonalMovement.OnlyWhenNoObstacles, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
             : base(iGrid, iStartPos, iEndPos, iDiagonalMovement, iMode)
         {
 
@@ -110,7 +68,7 @@ namespace JumpPointSearch
             CurIterationType = IterationType.LOOP;
         }
 
-        public JumpPointParam(BaseGrid iGrid, EndNodeUnWalkableTreatment iAllowEndNodeUnWalkable = EndNodeUnWalkableTreatment.ALLOW, DiagonalMovement iDiagonalMovement = DiagonalMovement.Always, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
+        public JumpPointParam(BaseGrid iGrid, EndNodeUnWalkableTreatment iAllowEndNodeUnWalkable = EndNodeUnWalkableTreatment.ALLOW, DiagonalMovement iDiagonalMovement = DiagonalMovement.OnlyWhenNoObstacles, HeuristicMode iMode = HeuristicMode.EUCLIDEAN)
             : base(iGrid, iDiagonalMovement, iMode)
         {
             CurEndNodeUnWalkableTreatment = iAllowEndNodeUnWalkable;
@@ -138,7 +96,7 @@ namespace JumpPointSearch
             //openList.Clear();
         }
 
-        [System.Obsolete("This property is deprecated, please use the CurEndNodeUnWalkableTreatment instead.")]
+        [Obsolete("This property is deprecated, please use the CurEndNodeUnWalkableTreatment instead.")]
         public bool AllowEndNodeUnWalkable
         {
             get
@@ -151,7 +109,7 @@ namespace JumpPointSearch
             }
         }
 
-        [System.Obsolete("This property is deprecated, please use the CurIterationType instead.")]
+        [Obsolete("This property is deprecated, please use the CurIterationType instead.")]
         public bool UseRecursive
         {
             get

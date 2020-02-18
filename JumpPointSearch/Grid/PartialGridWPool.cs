@@ -44,7 +44,7 @@ namespace JumpPointSearch.Grid
     {
         private NodePool m_nodePool;
 
-        public override int width
+        public override int Width
         {
             get
             {
@@ -56,7 +56,7 @@ namespace JumpPointSearch.Grid
             }
         }
 
-        public override int height
+        public override int Height
         {
             get
             {

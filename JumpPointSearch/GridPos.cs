@@ -52,8 +52,8 @@ namespace JumpPointSearch
         }
         public GridPos(int iX, int iY)
         {
-            this.x = iX;
-            this.y = iY;
+            x = iX;
+            y = iY;
         }
 
         public GridPos(GridPos b)
@@ -67,7 +67,7 @@ namespace JumpPointSearch
             return x ^ y;
         }
 
-        public override bool Equals(System.Object obj)
+        public override bool Equals(Object obj)
         {
             // Unlikely to compare incorrect type so removed for performance
             // if (!(obj.GetType() == typeof(GridPos)))
@@ -96,7 +96,7 @@ namespace JumpPointSearch
         public static bool operator ==(GridPos a, GridPos b)
         {
             // If both are null, or both are same instance, return true.
-            if (System.Object.ReferenceEquals(a, b))
+            if (ReferenceEquals(a, b))
             {
                 return true;
             }
@@ -119,8 +119,8 @@ namespace JumpPointSearch
 
         public GridPos Set(int iX, int iY)
         {
-            this.x = iX;
-            this.y = iY;
+            x = iX;
+            y = iY;
             return this;
         }
 

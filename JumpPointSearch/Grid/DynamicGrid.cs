@@ -46,7 +46,7 @@ namespace JumpPointSearch.Grid
         private bool m_notSet;
 
 
-        public override int width
+        public override int Width
         {
             get
             {
@@ -60,7 +60,7 @@ namespace JumpPointSearch.Grid
             }
         }
 
-        public override int height
+        public override int Height
         {
             get
             {
@@ -106,17 +106,6 @@ namespace JumpPointSearch.Grid
         }
 
 
-        public override Node GetNodeAt(int iX, int iY)
-        {
-            GridPos pos = new GridPos(iX, iY);
-            return GetNodeAt(pos);
-        }
-
-        public override bool IsWalkableAt(int iX, int iY)
-        {
-            GridPos pos = new GridPos(iX, iY);
-            return IsWalkableAt(pos);
-        }
 
         private void setBoundingBox()
         {
@@ -143,23 +132,17 @@ namespace JumpPointSearch.Grid
             if (iWalkable)
             {
                 if (m_nodes.ContainsKey(pos))
-                {
-                   // this.m_nodes[pos].walkable = iWalkable;
                     return true;
-                }
-                else
-                {
-                    if (iX < m_gridRect.minX || m_notSet)
-                        m_gridRect.minX = iX;
-                    if (iX > m_gridRect.maxX || m_notSet)
-                        m_gridRect.maxX = iX;
-                    if (iY < m_gridRect.minY || m_notSet)
-                        m_gridRect.minY = iY;
-                    if (iY > m_gridRect.maxY || m_notSet)
-                        m_gridRect.maxY = iY;
-                    m_nodes.Add(new GridPos(pos.x, pos.y), new Node(pos.x, pos.y, iWalkable));
-                    //m_notSet = false;
-                }
+                
+                if (iX < m_gridRect.minX || m_notSet)
+                    m_gridRect.minX = iX;
+                if (iX > m_gridRect.maxX || m_notSet)
+                    m_gridRect.maxX = iX;
+                if (iY < m_gridRect.minY || m_notSet)
+                    m_gridRect.minY = iY;
+                if (iY > m_gridRect.maxY || m_notSet)
+                    m_gridRect.maxY = iY;
+                m_nodes.Add(new GridPos(pos.x, pos.y), new Node(pos.x, pos.y, iWalkable));
             }
             else
             {
@@ -173,6 +156,18 @@ namespace JumpPointSearch.Grid
             return true;
         }
 
+        public override Node GetNodeAt(int iX, int iY)
+        {
+            GridPos pos = new GridPos(iX, iY);
+            return GetNodeAt(pos);
+        }
+
+        public override bool IsWalkableAt(int iX, int iY)
+        {
+            GridPos pos = new GridPos(iX, iY);
+            return IsWalkableAt(pos);
+        }
+        
         public override Node GetNodeAt(GridPos iPos)
         {
             if (m_nodes.ContainsKey(iPos))
@@ -185,11 +180,6 @@ namespace JumpPointSearch.Grid
         public override bool IsWalkableAt(GridPos iPos)
         {
             return m_nodes.ContainsKey(iPos);
-        }
-
-        public override bool SetWalkableAt(GridPos iPos, bool iWalkable)
-        {
-            return SetWalkableAt(iPos.x, iPos.y, iWalkable);
         }
 
         public override void Reset()

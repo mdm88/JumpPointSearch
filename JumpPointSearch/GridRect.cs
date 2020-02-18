@@ -99,7 +99,7 @@ namespace JumpPointSearch
         public static bool operator ==(GridRect a, GridRect b)
         {
             // If both are null, or both are same instance, return true.
-            if (System.Object.ReferenceEquals(a, b))
+            if (ReferenceEquals(a, b))
             {
                 return true;
             }
@@ -122,10 +122,10 @@ namespace JumpPointSearch
 
         public GridRect Set(int iMinX, int iMinY, int iMaxX, int iMaxY)
         {
-            this.minX = iMinX;
-            this.minY = iMinY;
-            this.maxX = iMaxX;
-            this.maxY = iMaxY;
+            minX = iMinX;
+            minY = iMinY;
+            maxX = iMaxX;
+            maxY = iMaxY;
             return this;
         }
     }

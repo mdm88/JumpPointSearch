@@ -57,14 +57,14 @@ namespace JumpPointSearch
 
         public static float Euclidean(int iDx, int iDy)
         {
-            float tFdx = (float)iDx;
-            float tFdy = (float)iDy;
+            float tFdx = iDx;
+            float tFdy = iDy;
             return (float)Math.Sqrt((double)(tFdx * tFdx + tFdy * tFdy));
         }
 
         public static float Chebyshev(int iDx, int iDy)
         {
-            return (float)Math.Max(iDx, iDy);
+            return Math.Max(iDx, iDy);
         }
     }
 }

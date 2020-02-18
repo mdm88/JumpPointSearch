@@ -40,31 +40,31 @@ namespace JumpPointSearch.Grid
 {
     public class StaticGrid : BaseGrid
     {
-        public override int width { get; protected set; }
+        public override int Width { get; protected set; }
 
-        public override int height { get; protected set; }
+        public override int Height { get; protected set; }
 
         private Node[][] m_nodes;
 
-        public StaticGrid(int iWidth, int iHeight, bool[][] iMatrix = null):base()
+        public StaticGrid(int iWidth, int iHeight, bool defaultWalkability = false, bool[][] iMatrix = null):base()
         {
-            width = iWidth;
-            height = iHeight;
+            Width = iWidth;
+            Height = iHeight;
             m_gridRect.minX = 0;
             m_gridRect.minY = 0;
             m_gridRect.maxX = iWidth-1;
             m_gridRect.maxY = iHeight - 1;
-            this.m_nodes = buildNodes(iWidth, iHeight, iMatrix);
+            m_nodes = buildNodes(iWidth, iHeight, defaultWalkability, iMatrix);
         }
 
         public StaticGrid(StaticGrid b)
             : base(b)
         {
-            bool[][] tMatrix = new bool[b.width][];
-            for (int widthTrav = 0; widthTrav < b.width; widthTrav++)
+            bool[][] tMatrix = new bool[b.Width][];
+            for (int widthTrav = 0; widthTrav < b.Width; widthTrav++)
             {
-                tMatrix[widthTrav] = new bool[b.height];
-                for (int heightTrav = 0; heightTrav < b.height; heightTrav++)
+                tMatrix[widthTrav] = new bool[b.Height];
+                for (int heightTrav = 0; heightTrav < b.Height; heightTrav++)
                 {
                     if(b.IsWalkableAt(widthTrav,heightTrav))
                         tMatrix[widthTrav][heightTrav] = true;
@@ -72,10 +72,10 @@ namespace JumpPointSearch.Grid
                         tMatrix[widthTrav][heightTrav] = false;
                 }
             }
-            this.m_nodes = buildNodes(b.width, b.height, tMatrix);
+            m_nodes = buildNodes(b.Width, b.Height, false, tMatrix);
         }
        
-        private Node[][] buildNodes(int iWidth, int iHeight, bool[][] iMatrix)
+        private Node[][] buildNodes(int iWidth, int iHeight, bool defaultWalkability, bool[][] iMatrix)
         {
 
             Node[][] tNodes = new Node[iWidth][];
@@ -84,7 +84,7 @@ namespace JumpPointSearch.Grid
                 tNodes[widthTrav] = new Node[iHeight];
                 for (int heightTrav = 0; heightTrav < iHeight; heightTrav++)
                 {
-                    tNodes[widthTrav][heightTrav] = new Node(widthTrav, heightTrav, null);
+                    tNodes[widthTrav][heightTrav] = new Node(widthTrav, heightTrav, defaultWalkability);
                 }
             }
 
@@ -118,43 +118,28 @@ namespace JumpPointSearch.Grid
 
         public override Node GetNodeAt(int iX, int iY)
         {
-            return this.m_nodes[iX][iY];
+            return m_nodes[iX][iY];
         }
 
         public override bool IsWalkableAt(int iX, int iY)
         {
-            return isInside(iX, iY) && this.m_nodes[iX][iY].walkable;
+            return isInside(iX, iY) && m_nodes[iX][iY].walkable;
         }
 
         protected bool isInside(int iX, int iY)
         {
-            return (iX >= 0 && iX < width) && (iY >= 0 && iY < height);
+            return (iX >= 0 && iX < Width) && (iY >= 0 && iY < Height);
         }
 
         public override bool SetWalkableAt(int iX, int iY, bool iWalkable)
         {
-            this.m_nodes[iX][iY].walkable = iWalkable;
+            m_nodes[iX][iY].walkable = iWalkable;
             return true;
         }
 
         protected bool isInside(GridPos iPos)
         {
             return isInside(iPos.x, iPos.y);
-        }
-
-        public override Node GetNodeAt(GridPos iPos)
-        {
-            return GetNodeAt(iPos.x, iPos.y);
-        }
-
-        public override bool IsWalkableAt(GridPos iPos)
-        {
-            return IsWalkableAt(iPos.x, iPos.y);
-        }
-
-        public override bool SetWalkableAt(GridPos iPos, bool iWalkable)
-        {
-            return SetWalkableAt(iPos.x, iPos.y, iWalkable);
         }
 
         public override void Reset()
@@ -164,9 +149,9 @@ namespace JumpPointSearch.Grid
 
         public void Reset(bool[][] iMatrix)
         {
-            for (int widthTrav = 0; widthTrav < width; widthTrav++)
+            for (int widthTrav = 0; widthTrav < Width; widthTrav++)
             {
-                for (int heightTrav = 0; heightTrav < height; heightTrav++)
+                for (int heightTrav = 0; heightTrav < Height; heightTrav++)
                 {
                     m_nodes[widthTrav][heightTrav].Reset();
                 }
@@ -176,14 +161,14 @@ namespace JumpPointSearch.Grid
             {
                 return;
             }
-            if (iMatrix.Length != width || iMatrix[0].Length != height)
+            if (iMatrix.Length != Width || iMatrix[0].Length != Height)
             {
                 throw new System.Exception("Matrix size does not fit");
             }
 
-            for (int widthTrav = 0; widthTrav < width; widthTrav++)
+            for (int widthTrav = 0; widthTrav < Width; widthTrav++)
             {
-                for (int heightTrav = 0; heightTrav < height; heightTrav++)
+                for (int heightTrav = 0; heightTrav < Height; heightTrav++)
                 {
                     if (iMatrix[widthTrav][heightTrav])
                     {
@@ -199,11 +184,11 @@ namespace JumpPointSearch.Grid
 
         public override BaseGrid Clone()
         {
-            int tWidth = width;
-            int tHeight = height;
-            Node[][] tNodes = this.m_nodes;
+            int tWidth = Width;
+            int tHeight = Height;
+            Node[][] tNodes = m_nodes;
 
-            StaticGrid tNewGrid = new StaticGrid(tWidth, tHeight, null);
+            StaticGrid tNewGrid = new StaticGrid(tWidth, tHeight);
 
             Node[][] tNewNodes = new Node[tWidth][];
             for (int widthTrav = 0; widthTrav < tWidth; widthTrav++)
