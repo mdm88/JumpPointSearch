@@ -19,19 +19,17 @@ namespace JumpPointSearch.Grid
             m_gridRect.minY = 0;
             m_gridRect.maxX = iWidth-1;
             m_gridRect.maxY = iHeight - 1;
-            _nodes = BuildNodes(iMatrix);
+            BuildNodes(iMatrix);
         }
 
-        protected Dictionary<GridPos, Node> BuildNodes(List<GridPos> iWalkableGridList)
+        protected void BuildNodes(List<GridPos> iWalkableGridList)
         {
-            var nodes = new Dictionary<GridPos, Node>();
-            if (iWalkableGridList == null)
-                return nodes;
-            
+            _nodes = new Dictionary<GridPos, Node>();
+            if (iWalkableGridList == null) 
+                return;
+
             foreach (GridPos gridPos in iWalkableGridList)
                 SetWalkableAt(gridPos.x, gridPos.y, false);
-
-            return nodes;
         }
         
         public override Node GetNodeAt(int iX, int iY)
